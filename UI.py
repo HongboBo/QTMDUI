@@ -6,7 +6,7 @@ from dialogue_runner import run_dialogue
 import time
 import sys
 
-# 导入动态RAG模块
+
 from rag_llm_dynamic import get_rag_instance, read_file_content
 
 # Page config
@@ -164,7 +164,7 @@ if 'rag_instance' not in st.session_state:
 if 'kb_info' not in st.session_state:
     st.session_state.kb_info = {}
 
-# Agent配置
+# Agent
 AGENTS = {
     "Conservation 🌲": {
         "rag_name": "ConservationAgent",
@@ -215,7 +215,7 @@ with st.sidebar:
             st.markdown(f"**{agent_name}**")
             rag_name = agent_config["rag_name"]
 
-            # 显示当前状态
+
             kb_info = st.session_state.rag_instance.get_kb_info(rag_name)
             if kb_info['loaded']:
                 kb_type = "📘 Default KB" if kb_info['using_default'] else "📗 Custom KB"
@@ -257,7 +257,7 @@ with st.sidebar:
                         else:
                             st.error(f"❌ Failed to load files for {agent_name}")
 
-            # 重置按钮
+
             col1, col2 = st.columns(2)
             with col1:
                 if st.button(f"🔄 Reset", key=f"reset_{rag_name}", use_container_width=True):
